@@ -41,12 +41,18 @@ sub extract_s(@)
     # trim front until <s>
     while(1)
     {
+	
 	my $l = shift @input; 
+	unless($l)
+	{
+	    warn "extract_s: possible missing <s>";
+	    last;
+	}
 	last if ($l =~ /^<s>/); 
     }
     
     #sanity check 
-    warn "extract_s: ill formed input @input" unless (scalar (@input)); 
+    #warn "extract_s: ill formed input @input" unless (scalar (@input)); 
     
     # trim end till meeting </s> 
     while(scalar(@input))
@@ -56,7 +62,7 @@ sub extract_s(@)
     }
 
     #sanity check 
-    warn "extract_s: ill formed input @input" unless (scalar (@input)); 
+    warn "extract_s: ill formed input @_" unless (scalar (@input)); 
 
     return @input; 
 }
