@@ -101,6 +101,12 @@ sub convert_sentence(@)
 	my $pos = $item[1]; 
 	my $lemma = $item[2]; 
 	my $cpos = substr $pos, 0, 1; 
+
+	# trim form, pos and lemma (removing trailing whitespace(s), if any)
+	$lemma =~ s/\s+$//; 
+	$form =~ s/\s+$//; 
+	$pos =~ s/\s+$//; 
+
 	
 	# ID, FORM, LEMMA, CPOSTAG, POSTAG, FEATS, HEAD, DEPREL
 	print $token_id, "\t"; 
