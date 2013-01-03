@@ -30,6 +30,7 @@ while(<FILEPARSED>)
 	#die "sanity check fails! Two files are not of same input? $raw_line $parsed_line" unless (($rawtab[0] eq $parsedtab[0]) and ($rawtab[1] eq $parsedtab[1]) and ($rawtab[3] and $parsedtab[3])); 
 	die "sanity check fails! Two files are not of same input? $raw_line $parsed_line" unless (($rawtab[0] eq $parsedtab[0])); 	
 	die "eh, arg1 should be raw file, arg2 should be parsed file" unless ((length $rawtab[4]) > (length $parsedtab[4])); 
+	warn "missing pos in parsed output??!\n $raw_line;\n$parsed_line;\n" unless (defined ($parsedtab[4])); 
 
 	# replace the 5th tab from $raw_line one 
 	$parsedtab[4] = $rawtab[4]; # POS 
